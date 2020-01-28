@@ -1,25 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 
-/*	Os trÍs jurados de um concurso de fantasias avaliam 2 critÈrios distintos:
-originalidade e beleza. A nota final do candidato È calculada do seguinte modo:
+/*	Os tr√™s jurados de um concurso de fantasias avaliam 2 crit√©rios distintos:
+originalidade e beleza. A nota final do candidato √© calculada do seguinte modo:
 nota_final = (0.6 * nota_da_originalidade) + (0.4 * nota_da_beleza)
-Para evitar distorÁıes, s„o desprezadas a maior e a menor nota de cada critÈrio.
-FaÁa um programa, que leia, para cada candidato, o seu n˙mero de inscriÁ„o
-(inteiro) e suas 3 notas (reais) de cada critÈrio, exibindo sua nota final. Ao
-tÈrmino do programa, tambÈm deve ser exibido o n˙mero de inscriÁ„o do
-candidato vencedor. A entrada de dados È finalizada pela digitaÁ„o do valor 0
-(zero) como n˙mero do candidato.
+Para evitar distor√ß√µes, s√£o desprezadas a maior e a menor nota de cada crit√©rio.
+Fa√ßa um programa, que leia, para cada candidato, o seu n√∫mero de inscri√ß√£o
+(inteiro) e suas 3 notas (reais) de cada crit√©rio, exibindo sua nota final. Ao
+t√©rmino do programa, tamb√©m deve ser exibido o n√∫mero de inscri√ß√£o do
+candidato vencedor. A entrada de dados √© finalizada pela digita√ß√£o do valor 0
+(zero) como n√∫mero do candidato.
 
-O seu programa deve, obrigatoriamente, utilizar uma funÁ„o chamada
-nota_valida, implementada por vocÍ, que receba as 3 notas de um critÈrio e
-retorne apenas a nota v·lida. Para facilitar, considere que as 3 notas de cada
-critÈrio ser„o sempre diferentes entre si. */
+O seu programa deve, obrigatoriamente, utilizar uma fun√ß√£o chamada
+nota_valida, implementada por voc√™, que receba as 3 notas de um crit√©rio e
+retorne apenas a nota v√°lida. Para facilitar, considere que as 3 notas de cada
+crit√©rio ser√£o sempre diferentes entre si. */
 
 
 float nota_da_beleza, nota_da_originalidade, nota_final, n1, n2, n3;
- 	///FunÁ„o nota v·lida///
-int nota_valida(float a, float b, float c){
+ 	///Fun√ß√£o nota v√°lida///
+float nota_valida(float a, float b, float c){
     if ((a>b && a<c) || (a<b && a>c)){
         return a;
     }
@@ -33,11 +34,12 @@ int nota_valida(float a, float b, float c){
     }
 } 
 int main(){
-	float nota_da_beleza, nota_da_originalidade, nota_final, no1, no2, no3, nb1, nb2, nb3;
-    int inscricao, vencedor;
-    float maior_nota=0;
-    printf("Informe seu numero de inscricao: ");
-    scanf("%d", &inscricao);
+	setlocale (LC_ALL, "")
+	float nota_final, no1, no2, no3, nb1, nb2, nb3;
+    	int inscricao, vencedor;
+    	float maior_nota=0;
+    	printf("Informe seu numero de inscricao: ");
+    	scanf("%d", &inscricao);
     
     while(inscricao !=0){
     	
@@ -75,14 +77,14 @@ int main(){
                 vencedor=inscricao;
             }
             
-            printf("\nInforme seu numero de inscricao ou Informe 0(zero) para finalizar: ");
+            printf("\nInforme seu n√∫mero de inscri√ß√£o ou Informe 0(zero) para finalizar: ");
             scanf("%d", &inscricao);
         
 		}
     
 	}
     
-    //////////*INSCRI«√O E NOTA FINAL DO VENCEDOR*//////////
-    printf("\nO vencedor foi o candidato de inscricao %d com nota: %3.2f", vencedor, maior_nota);
+    //////////*INSCRI√á√ÉO E NOTA FINAL DO VENCEDOR*//////////
+    printf("\nO vencedor foi o candidato de inscri√ß√£o %d com nota: %.2f", vencedor, maior_nota);
     return 0;
 }
